@@ -1,0 +1,25 @@
+version: '3.2'
+
+services:
+  application:
+    image: registry.dev.adoreme.com/microservices/pct/application:${APPLICATION_IMAGE_TAG:-latest}
+    networks:
+      - default
+      - proxy
+    environment:
+      - SERVICE_NAME=${SERVICE_NAME:-pct-dev}
+      - SERVICE_PORTS=80
+      - VIRTUAL_HOST=https://${SERVICE_VIRTUAL_HOST:-pct-default.dev.adoreme.com},http://${SERVICE_VIRTUAL_HOST:-pct-default.dev.adoreme.com}
+    extra_hosts:
+      - "logstash.adoreme.com:127.0.0.1"
+
+  mysql:
+    image: registry.dev.adoreme.com/base-images/mysql:${MYSQL_IMAGE_TAG:-single-master-23}
+    networks:
+      - default
+
+networks:
+  default:
+    attachable: true
+  proxy:
+    external: true

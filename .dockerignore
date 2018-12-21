@@ -1,0 +1,12 @@
+auth.json
+docker-compose.yml
+docker-swarm.sh
+Dockerfile
+.env
+.git
+.dockerignore
+.gitignore
+.gitattributes
+docker-compose.override.yml
+docker-stack.yml
+

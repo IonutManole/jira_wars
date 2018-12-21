@@ -1,0 +1,25 @@
+version: '3.2'
+
+services:
+  application:
+    hostname: ms-bom
+    image: registry.dev.adoreme.com/microservices/ms-bom/application:${APPLICATION_IMAGE_TAG:-latest}
+    networks:
+      - default
+      - proxy
+    environment:
+      - SERVICE_NAME=${SERVICE_NAME:-ms-bom-prod}
+      - SERVICE_PORTS=80
+      - VIRTUAL_HOST=${SERVICE_VIRTUAL_HOST:-ms-bom.bs-prod.adoreme.com}
+      - NGINX_ACCESSLOG_TARGET=syslog:server=10.150.0.3:5002\ logstash
+      - NGINX_ERRORLOG_TARGET=syslog:server=10.150.0.3:5002
+    volumes:
+      - /etc/secrets/ms-bom:/secrets
+    extra_hosts:
+      - "logstash.adoreme.com:10.150.0.3"
+networks:
+  default:
+    attachable: true
+  proxy:
+    external: true
+

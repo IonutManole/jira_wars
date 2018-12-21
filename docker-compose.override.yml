@@ -1,0 +1,21 @@
+version: '3.2'
+
+services:
+  application:
+    image: registry.dev.adoreme.com/base-images/nginx_fpm_pdf_gd:single-master-64
+    volumes:
+      - ./:/var/www
+    labels:
+      - "traefik.port=80"
+      - "traefik.backend=jira_wars_application"
+      - "traefik.frontend.rule=Host:jira_wars.local-swarm.adoreme.com"
+      - "traefik.docker.network=proxy"
+
+  mysql:
+    ports:
+        - 33099:3306
+    volumes:
+      - mysql:/var/lib/mysql
+
+volumes:
+  mysql:
