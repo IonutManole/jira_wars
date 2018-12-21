@@ -82,7 +82,7 @@ trait ServiceLocatorTrait
         if ($this->loading) {
             $message = sprintf('The service "%s" has a dependency on a non-existent service "%s". This locator %s', end($this->loading), $id, $message);
         } else {
-            $message = sprintf('Service "%s" not found: the current service locator %s', $id, $message);
+            $message = sprintf('Services "%s" not found: the current service locator %s', $id, $message);
         }
 
         return new class($message) extends \InvalidArgumentException implements NotFoundExceptionInterface {

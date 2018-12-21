@@ -15,7 +15,7 @@ namespace Symfony\Contracts\Service;
  * A ServiceSubscriber exposes its dependencies via the static {@link getSubscribedServices} method.
  *
  * The getSubscribedServices method returns an array of service types required by such instances,
- * optionally keyed by the service names used internally. Service types that start with an interrogation
+ * optionally keyed by the service names used internally. Services types that start with an interrogation
  * mark "?" are optional, while the other ones are mandatory service dependencies.
  *
  * The injected service locators SHOULD NOT allow access to any other services not specified by the method.

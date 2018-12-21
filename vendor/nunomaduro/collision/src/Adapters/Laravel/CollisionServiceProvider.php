@@ -19,7 +19,7 @@ use Illuminate\Contracts\Debug\ExceptionHandler as ExceptionHandlerContract;
 use NunoMaduro\Collision\Contracts\Adapters\Phpunit\Listener as ListenerContract;
 
 /**
- * This is an Collision Laravel Adapter Service Provider implementation.
+ * This is an Collision Laravel Adapter Services Provider implementation.
  *
  * Registers the Error Handler on Laravel.
  *
